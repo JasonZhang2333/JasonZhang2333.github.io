@@ -1,10 +1,10 @@
 # Site settings
-title: Zzc Blog
-SEOTitle: 张治琛的博客 | Zzc Blog
+title: Zhangzc Blog
+SEOTitle: 张治琛的博客 | Zhangzc Blog
 header-img: img/home-bg.jpg
 email: zhangzc@pku.edu.cn
-description: "关于程序与设计、黑客与画家 | 黄玄，Web & Mobile Lover，Software Engineer，UX Designer | 这里是 @Hux黄玄 的个人博客，与你一起发现更大的世界。"
-keyword: "张治琛, Zhangzc, Zzc, Jason Zhang, JasonZhang33, , 张治琛的博客, Zzc Blog, 博客, 个人网站, 金融, 宏观经济, 量化, 程序设计"
+description: "关于投资、程序与健身 | 张治琛 | 这里是 @Zhangzc 的个人博客。"
+keyword: "张治琛, Zhangzc, Zzc, Jason Zhang, 张治琛的博客, Zzc Blog, 博客, 个人网站, 金融, 投资, 量化, 程序设计，健身"
 #url:               # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
 
@@ -16,8 +16,8 @@ RSS: false
 #weibo_username:     
 zhihu_username:     zhang-zhi-chen-14
 github_username:    JasonZhang2333
-#twitter_username:   huxpro
-#facebook_username:  huxpro
+#twitter_username:   zhangzc
+#facebook_username:  zhangzc
 #linkedin_username:  firstname-lastname-idxxxx
 
 
@@ -79,7 +79,7 @@ netease_comment: false
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
-sidebar-avatar: /img/avatar-hux-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/avatar-zzc-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
