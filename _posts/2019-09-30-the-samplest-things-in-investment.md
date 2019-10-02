@@ -1,13 +1,15 @@
 ---
 layout:     post
 title:      "《投资中最简单的事》笔记"
+subtitle:   "价值投资的经典阐释"
 date:       2019-09-30 
-author:     "Jason Zhang"
+author:     "Zzc"
 header-img: "img/post-bg-digital-native.jpg"
 catalog: true
 tags:
     - 邱国鹭
     - 投资
+    - 笔记
 ---
 
 >不为不可成，不求不可得，不处不可久，不行不可复

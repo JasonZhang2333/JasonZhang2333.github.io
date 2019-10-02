@@ -1,8 +1,9 @@
 ---
 layout:     post
 title:      "《投资中不简单的事》笔记"
+subtitle:   "价值投资在市场中的实践总结"
 date:       2019-10-02 
-author:     "Jason Zhang"
+author:     "Zzc"
 header-img: "img/post-bg-digital-native.jpg"
 catalog: true
 tags:
@@ -12,6 +13,7 @@ tags:
     - 孙庆瑞
     - 冯柳
     - 投资
+    - 笔记
 ---
 
 ## 邱国鹭：投资的本质三个维度
