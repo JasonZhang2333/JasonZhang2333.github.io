@@ -1,9 +1,9 @@
 # Site settings
-title: Zhangzc Blog
-SEOTitle: 张治琛的博客 | Zhangzc Blog
+title: Zzc Blog
+SEOTitle: 张治琛的博客 | Zzc Blog
 header-img: img/home-bg.jpg
 email: zhangzc@pku.edu.cn
-description: "关于投资、程序与健身 | 张治琛 | 这里是 @Zhangzc 的个人博客。"
+description: "关于投资、程序与健身 | 张治琛 | 这里是 @Zzc 的个人博客。"
 keyword: "张治琛, Zhangzc, Zzc, Jason Zhang, 张治琛的博客, Zzc Blog, 博客, 个人网站, 金融, 投资, 量化, 程序设计，健身"
 #url:               # your host, for absolute URL
 baseurl: ""                             # for example, '/blog' if your blog hosted on 'host/blog'
@@ -78,7 +78,7 @@ netease_comment: false
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "For the next quantum leap<br>离开世界之前，一切都是过程"
+sidebar-about-description: "Do good things, don't ask the future<br>但行好事，莫问前程"
 sidebar-avatar: /img/avatar-zzc-ny.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
@@ -100,42 +100,42 @@ page-mathjax: false
 
 
 
-# Friends
-friends: [
-    {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
-        title: "乱序",
-        href: "http://mida.re/"
-    },{
-        title: "前端外刊评论",
-        href: "http://qianduan.guru/"
-    },{
-        title: "天镶的博客",
-        href: "http://lingyu.wang/"
-    },{
-        title: "Luke 的自留地",
-        href: "http://hmqk1995.github.io"
-    },{
-        title: "Ebn's Blog",
-        href: "http://ebnbin.com/"
-    },{
-        title: "SmdCn's Blog",
-        href: "http://blog.smdcn.net"
-    },{
-        title: "David's Game",
-        href: "https://www.ruoyaowu.com/"
-    },{
-        title: "DHong Say",
-        href: "http://dhong.co"
-    },{
-        title: "尹峰以为",
-        href: "http://ingf.github.io/"
-    },{
-        title: "解旻的博客",
-        href: "http://xieminis.me/"
-    }
-]
+# # Friends
+# friends: [
+#     {
+#     #     title: "Su",
+#     #     href: "http://su.gallery/"
+#     # },{
+#         title: "乱序",
+#         href: "http://mida.re/"
+#     },{
+#         title: "前端外刊评论",
+#         href: "http://qianduan.guru/"
+#     },{
+#         title: "天镶的博客",
+#         href: "http://lingyu.wang/"
+#     },{
+#         title: "Luke 的自留地",
+#         href: "http://hmqk1995.github.io"
+#     },{
+#         title: "Ebn's Blog",
+#         href: "http://ebnbin.com/"
+#     },{
+#         title: "SmdCn's Blog",
+#         href: "http://blog.smdcn.net"
+#     },{
+#         title: "David's Game",
+#         href: "https://www.ruoyaowu.com/"
+#     },{
+#         title: "DHong Say",
+#         href: "http://dhong.co"
+#     },{
+#         title: "尹峰以为",
+#         href: "http://ingf.github.io/"
+#     },{
+#         title: "解旻的博客",
+#         href: "http://xieminis.me/"
+#     }
+# ]
 
 theme: jekyll-theme-cayman
