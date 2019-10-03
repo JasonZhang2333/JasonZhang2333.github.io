@@ -6,9 +6,11 @@ date: 2018-10-16
 author: "Zzc"
 header-style: text
 mathjax: true
+catalog: true
 tags:
   - 决策树
   - 机器学习
+  - 编程
 ---
 
 >决策树是一种基本的分类回归方法，它基于树状结构将特征空间分割成一系列简单区域，根据区域内训练集的平均值或众数对待预测观测值进行预测；基本决策树算法流程主要包括特征选择、决策树生成和决策树修剪，主流算法包括ID3、C4.5和CART(Classification and Regression Tree)等。
