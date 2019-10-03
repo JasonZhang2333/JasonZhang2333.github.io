@@ -1,18 +1,80 @@
 ---
 layout: post
 title: "决策树算法简介"
+subtitle: "Introduction to  decision-tree"
+date: 2018-10-16
 author: "Zzc"
 header-style: text
 tags:
-  - decision tree
+  - 决策树
+  - 机器学习
 ---
 
-![img](/img/in-post/post-decision-tree/post-decision-tree001.png)
+>决策树是一种基本的分类回归方法，它基于树状结构将特征空间分割成一系列简单区域，根据区域内训练集的平均值或众数对待预测观测值进行预测；基本决策树算法流程主要包括特征选择、决策树生成和决策树修剪，主流算法包括ID3、C4.5和CART(Classification and Regression Tree)等。
 
-![img](/img/in-post/post-decision-tree/post-decision-tree002.png)
+决策树是一种常见机器学习算法，主要优点是模型具有可读性，分类速度快。它基于树状结构进行决策，和人类的决策机制很相似，例如银行评估借款人的还款可能性时，会对借款人进行一系列判断：先看借款人是否拥有房产，如果没有房产，再看借款人是否已婚，如果未婚，再看借款人的年收入，如果年收入较低，则借款人很可能无法偿还借款，如图所示：
 
-![img](/img/in-post/post-decision-tree/post-decision-tree003.png)
+![img](/img/in-post/post-decision-tree/timg.jpg)
 
-![img](/img/in-post/post-decision-tree/post-decision-tree004.png)
+*决策树结构*
 
-![img](/img/in-post/post-decision-tree/post-decision-tree005.png)
+一棵决策树包含一个根结点、若干内部结点和若干叶子结点，每个结点选取一个特征进行分割，不断递归形成决策树，因为算法的目的是产生一棵泛化能力强的决策树，所以还要对决策树进行修剪，防止过拟合，所以基本流程包括特征选择、决策树生成、决策树修剪。
+
+### 特征选择
+
+不同特征之间的选择主要是根据选取特征之后，分割成的子集的实例值是否也得到有效划分来比较的，比如说要判断人的体重，如果决策树选取性别作为特征进行分割，则男性往往体重稍重，女性往往体重稍轻，这就是一个比较有效地特征选择，如果从量化的角度来看，主要的特征选择标准有信息增益、信息增益比和基尼指数等，实验研究表明([Mingers[1989b]](#ref1))，其他的特征选择标准对决策树性能提升有限，仅2%的情况下会有所不同。
+
+信息增益引入了信息论中“熵”的概念，特征的概率分布如果是$P(A=a_i)=p_i$，则特征的熵定义为：$$H(A)=-\sum_{i=1}^n p_i \log{p_i}$$
+
+数学特征为特征分布越集中于几个值，熵越小，这样根据选取的特征分割后，子集的熵之和比原样本熵减少的部分，叫做信息增益，可以作为特征分割是否有效的标准，信息增益越大，选取的特征越好。另一个原则信息增益比，就是将信息增益部分熵的差值变为熵的比率。
+
+基尼指数则表示为：$$G(A)=\sum_{i=1}^n\sum_{j\neq i} p_i p_j$$
+
+基尼指数实际上反映了集合中随机抽取两个样本，样本标记不一致的概率，基尼指数越小，说明样本分割得越有效，其数学特征和熵类似。
+
+决策树根据特征是否属于连续数值可分为分类树和回归树，分类树可直接套用上述指标，但是回归树在选取特征的过程中还要确定特征具体的分割数值，对于单一特征的分割数值，可以通过平方误差和最小原则进行选取，保证根据选取的分割数值分割后的子集的平方误差和之和是所有可选的分割数值中最小的。
+
+### 决策树生成
+
+决策树生成基本的算法流程如下：
+
+- 训练集D，特征集A，阈值$\epsilon$；
+- 决策树T
+1. 若D中实例同属一类$C_k$，则T为单结点树，将$C_k$作为结点类标记，返回T；
+2. 若A为空，则T为单结点树，将D中实例最多的$C_k$作为结点类标记，返回T；
+3. 否则，根据特征选择原则的计算结果选择特征$A_g$；
+4. 若特征选择原则的计算结果小于$\epsilon$，则T为单结点树，将D中实例最多的$C_k$作为结点类标记，返回T；
+5. 否则，根据特征$A_g$将D分割成子集$D_i$，将$D_i$作为输入调用1到5递归构建子结点，由结点及子结点构成T并返回；
+
+![img](/img/in-post/post-decision-tree/tree.png)
+
+### 决策树修剪
+
+决策树根据一组训练集进行训练，训练得到的决策树分支过多的话，会存在着过拟合的风险，所以要对较多的分支结点进行合并，增强决策树的泛化能力，修剪分为预剪枝和后剪枝，预修剪的过程已经包含在之前决策树算法中的阈值设置之中，这里主要讨论后剪枝。
+
+后剪枝在之前的特征选择原则的基础之上生成损失函数，作为是否剪枝的判断标准：$$C_{\alpha}(T)=C(T)+\alpha |T|$$
+
+这里$T$是任意子树，$|T|$为子树包含的叶子结点的数量，$C(T)$为基尼指数之类的函数，$\alpha$为超参，$\alpha$越大表明越偏好小决策树。在后剪枝过程中，从下到上遍历整棵决策树，对每个结点判断修剪结点后损失函数降低的程度：$$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}
+$$
+
+损失函数降低的程度小，表明这个结点存在意义不大，可以进行修剪，按照这一逻辑递归修剪决策树，就可以有效增加决策树的泛化能力，实验研究表明([Mingers[1989a]](#ref2))，在有数据噪音的情况下，修剪可以将决策树的泛化能力提升25%。
+
+### 主流算法
+
+决策树的主流算法包括ID3([Quinlan[1986]](#ref3))、C4.5([Quinlan[1993]](#ref4))和CART(Classification and Regression Tree)([Breiman[1984]](#ref5))，它们的流程主要和前文介绍的决策树生成算法相同。
+
+不同点在于，ID3和C4.5主要作为分类树使用，根据选取特征的取值范围，单个结点可能分叉成多个子结点，因而生成的决策树不是一个二叉树；前者的特征选择原则是信息增益最大化，后者的特征选择原则是信息增益比最大化；两种算法不进行后剪枝操作，因而存在过拟合的风险。
+
+CART算法即可用作分类树也可用作回归树，分类时特征选择只选择特征的一个取值进行相等与否的判断，回归时根据平方误差和最小化原则选取特征范围内的一个取值进行大于小于判断，因而生成的决策树是一棵标准的二叉树；算法的特征选择原则是基尼指数最小化；算法进行后剪枝操作，因而泛化能力较强。
+
+### 参考文献
+
+1. <a id="ref1">[J. Mingers. An empirical comparison of selection measures for decision-tree induction. Machine Learning, 43(4):319–342, 1989b.](https://link.springer.com/article/10.1007/BF00116837)</a>
+
+2. <a id="ref2">[J. Mingers. An empirical comparison of pruning methods for decision-tree induction. Machine Learning, 4(2):227–243, 1989a.](https://link.springer.com/article/10.1023/A%3A1022604100933)</a>
+
+3. <a id="ref3">[J. R. Quinlan. Induction of decision trees. Machine Learning, 1(1):81–106, 1986.](https://link.springer.com/article/10.1007/BF00116251)</a>
+
+4. <a id="ref4">[J. R. Quinlan. Programs for machine learning. 1993.](https://link.springer.com/article/10.1007%2FBF00993309)</a>
+
+5. <a id="ref5">[J. Friedman C. J. Stone Breiman, L. and R. A. Olshen. Classification and regression trees. 1984.](https://www.jstor.org/stable/2530946)</a>
