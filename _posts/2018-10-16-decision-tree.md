@@ -5,7 +5,7 @@ subtitle: "Introduction to  decision-tree"
 date: 2018-10-16
 author: "Zzc"
 header-style: text
-mathjax:true
+mathjax: true
 tags:
   - 决策树
   - 机器学习
