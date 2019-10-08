@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "分治法、动态规划与贪心算法分析"
-subtitle: "Divide and Conquer Method, Dynamic Programming and Greedy Algorithms Analysis"
 date: 2018-10-16
 author: "Zzc"
 header-style: text

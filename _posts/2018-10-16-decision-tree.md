@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "决策树算法简介"
-subtitle: "Introduction to  decision-tree"
 date: 2018-10-16
 author: "Zzc"
 header-style: text
