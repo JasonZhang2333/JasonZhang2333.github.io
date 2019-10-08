@@ -4,7 +4,7 @@ title:      "《投资中最简单的事》笔记"
 subtitle:   "价值投资的经典阐释"
 date:       2019-09-30 
 author:     "Zzc"
-header-img: "img/post-bg-digital-native.jpg"
+header-style: text
 catalog: true
 tags:
     - 邱国鹭
