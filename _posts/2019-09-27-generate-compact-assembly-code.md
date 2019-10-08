@@ -3,7 +3,7 @@ layout:     post
 title:      "生成简洁汇编代码"
 date:       2019-09-27
 author:     "Zzc"
-header-img: "img/post-bg-digital-native.jpg"
+header-style: text
 tags:
     - 编程
     - 汇编
