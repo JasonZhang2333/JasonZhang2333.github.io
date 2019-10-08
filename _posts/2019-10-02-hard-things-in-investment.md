@@ -4,7 +4,7 @@ title:      "《投资中不简单的事》笔记"
 subtitle:   "价值投资的实践总结"
 date:       2019-10-02 
 author:     "Zzc"
-header-img: "img/post-bg-digital-native.jpg"
+header-style: text
 catalog: true
 tags:
     - 邱国鹭
