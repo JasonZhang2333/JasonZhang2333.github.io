@@ -29,6 +29,7 @@ tags:
 机器语言中，GCC把过程转化成栈帧(frame)，由`%rbp`指向栈帧开始，`%rsp`指向栈顶
 
 ```cpp
+//test.cpp
 #include <cstdio>
 
 int foo(int x) {
@@ -51,6 +52,7 @@ gcc -S test.cpp
 命令行调用生成汇编语言
 
 ```
+# test.s
     .file   "test.cpp"
     .text
     .globl  _Z3fooi
@@ -101,3 +103,15 @@ main:
     .section    .note.GNU-stack,"",@progbits  
 ```
 
+`test.s`中
+1. 第7行保存了上一个栈帧指针，第8行设置了当前的栈帧指针，`main`函数在第28、29行做了同样的事情
+2. `main`函数第34行的代码实际等价于
+```
+  pushq %rip
+  jmp _Z3fooi
+```
+3. `foo`函数第17行的代码实际等价于
+```
+  popq %rip
+```
+4. 
