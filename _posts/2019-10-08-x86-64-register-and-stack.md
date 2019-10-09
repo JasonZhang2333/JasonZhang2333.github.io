@@ -50,8 +50,8 @@ int main() {
 gcc -S test.cpp
 ```
 
-```assembly
-    .file   "test.cpp"
+```x86asm
+    .file   "test1.cpp"
     .text
     .globl  _Z3fooi
     .type   _Z3fooi, @function
