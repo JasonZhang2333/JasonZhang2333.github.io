@@ -50,7 +50,7 @@ int main() {
 gcc -S test.cpp
 ```
 
-```gas
+```assembly
     .file   "test.cpp"
     .text
     .globl  _Z3fooi
