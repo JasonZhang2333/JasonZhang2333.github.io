@@ -24,3 +24,81 @@ tags:
 
 ### 栈帧
 
+![img](\img\in-post\post-x86-64-register-and-stack\20160508214803291.png)
+
+机器语言中，GCC把过程转化成栈帧(frame)，由`%rbp`指向栈帧开始，`%rsp`指向栈顶
+
+```cpp
+#include <cstdio>
+
+int foo(int x) {
+    int array[]={1,3,5};
+    return array[x];
+}
+
+int main() {
+    int i = 1;
+    int j = foo(i);
+    printf("i=%d,j=%d\n", i, j); 
+    return 0;
+}
+```
+
+命令行调用生成汇编语言
+
+```bash
+gcc -S test.cpp
+```
+
+```x86asm
+    .file   "test6.cpp"
+    .text
+    .globl  _Z3fooi
+    .type   _Z3fooi, @function
+_Z3fooi:
+.LFB0:
+    .cfi_startproc
+    movl    %edi, -20(%rsp)
+    movl    $1, -16(%rsp)
+    movl    $3, -12(%rsp)
+    movl    $5, -8(%rsp)
+    movl    -20(%rsp), %eax
+    cltq
+    movl    -16(%rsp,%rax,4), %eax
+    ret
+    .cfi_endproc
+.LFE0:
+    .size   _Z3fooi, .-_Z3fooi
+    .section    .rodata
+.LC0:
+    .string "i=%d,j=%d\n"
+    .text
+    .globl  main
+    .type   main, @function
+main:
+.LFB1:
+    .cfi_startproc
+    subq    $24, %rsp
+    .cfi_def_cfa_offset 32
+    movl    $1, 12(%rsp)
+    movl    12(%rsp), %eax
+    movl    %eax, %edi
+    call    _Z3fooi
+    movl    %eax, 8(%rsp)
+    movl    8(%rsp), %edx
+    movl    12(%rsp), %eax
+    movl    %eax, %esi
+    movl    $.LC0, %edi
+    movl    $0, %eax
+    call    printf
+    movl    $0, %eax
+    addq    $24, %rsp
+    .cfi_def_cfa_offset 8
+    ret
+    .cfi_endproc
+.LFE1:
+    .size   main, .-main
+    .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-4)"
+    .section    .note.GNU-stack,"",@progbits
+```
+
