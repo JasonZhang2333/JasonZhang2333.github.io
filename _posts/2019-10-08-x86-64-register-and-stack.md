@@ -50,7 +50,7 @@ gcc -S test.cpp
 
 命令行调用生成汇编语言
 
-```assembly
+```
     .file   "test.cpp"
     .text
     .globl  _Z3fooi
