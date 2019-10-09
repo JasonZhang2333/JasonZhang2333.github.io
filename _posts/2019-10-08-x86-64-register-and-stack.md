@@ -125,12 +125,13 @@ main:
 ###### 编译器优化后
 
 ```shell
-gcc -O3 -S test.cpp
+gcc -O3 -S test.cpp -o test2.s
 ```
 
 使用带有-O3优化选项的命令行生成汇编代码
 
 ```
+# test2.s
     .file   "test.cpp"
     .text
     .p2align 4,,15
@@ -169,3 +170,7 @@ main:
     .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-4)"
     .section    .note.GNU-stack,"",@progbits 
 ```
+
+`test2.s`中
+1. `gcc`分析`main`函数栈帧只需要8个字节，所以第25行代码预分配了8个字节的空间，然后在第32行代码进行了回收
+2. `foo`函数中没有处理栈帧，直接引用栈顶之外的地址，越界访问，这是因为`x86-64`可以遵循ABI规则，ABI规定了程序可以使用栈顶之外128字节的地址，相当于函数内联
