@@ -44,29 +44,30 @@ int main() {
 }
 ```
 
-命令行调用生成汇编语言
-
 ```shell
 gcc -S test.cpp
 ```
 
+命令行调用生成汇编语言
+
 ```assembly
-    .file   "test.cpp"
+    .file   "test6.cpp"
     .text
     .globl  _Z3fooi
     .type   _Z3fooi, @function
 _Z3fooi:
 .LFB0:
-    .cfi_startproc
-    movl    %edi, -20(%rsp)
-    movl    $1, -16(%rsp)
-    movl    $3, -12(%rsp)
-    movl    $5, -8(%rsp)
-    movl    -20(%rsp), %eax
+    pushq   %rbp
+    movq    %rsp, %rbp
+    movl    %edi, -20(%rbp)
+    movl    $1, -16(%rbp)
+    movl    $3, -12(%rbp)
+    movl    $5, -8(%rbp)
+    movl    -20(%rbp), %eax
     cltq
-    movl    -16(%rsp,%rax,4), %eax
+    movl    -16(%rbp,%rax,4), %eax
+    popq    %rbp
     ret
-    .cfi_endproc
 .LFE0:
     .size   _Z3fooi, .-_Z3fooi
     .section    .rodata
@@ -77,28 +78,26 @@ _Z3fooi:
     .type   main, @function
 main:
 .LFB1:
-    .cfi_startproc
-    subq    $24, %rsp
-    .cfi_def_cfa_offset 32
-    movl    $1, 12(%rsp)
-    movl    12(%rsp), %eax
+    pushq   %rbp
+    movq    %rsp, %rbp
+    subq    $16, %rsp
+    movl    $1, -4(%rbp)
+    movl    -4(%rbp), %eax
     movl    %eax, %edi
     call    _Z3fooi
-    movl    %eax, 8(%rsp)
-    movl    8(%rsp), %edx
-    movl    12(%rsp), %eax
+    movl    %eax, -8(%rbp)
+    movl    -8(%rbp), %edx
+    movl    -4(%rbp), %eax
     movl    %eax, %esi
     movl    $.LC0, %edi
     movl    $0, %eax
     call    printf
     movl    $0, %eax
-    addq    $24, %rsp
-    .cfi_def_cfa_offset 8
+    leave
     ret
-    .cfi_endproc
 .LFE1:
     .size   main, .-main
     .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-4)"
-    .section    .note.GNU-stack,"",@progbits
+    .section    .note.GNU-stack,"",@progbits  
 ```
 
