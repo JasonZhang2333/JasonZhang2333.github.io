@@ -51,7 +51,7 @@ gcc -S test.cpp
 ```
 
 ```gas
-    .file   "test1.cpp"
+    .file   "test.cpp"
     .text
     .globl  _Z3fooi
     .type   _Z3fooi, @function
