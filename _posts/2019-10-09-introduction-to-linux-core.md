@@ -97,7 +97,7 @@ tags:
 
 伙伴系统可以缓解内存碎片，但无法完全消除
 
-![img](/img/in-post/post-introduction-to-linux-core/2201910092044.png)
+![img](/img/in-post/post-introduction-to-linux-core/201910092044.png)
 *`slab`缓存*
 
 由于内核经常需要比页帧小得多的内存块，又无法使用标准库函数进行分配，所以内核在伙伴系统的基础上自行定义了额外的内存管理层用于划分更小的内存块，这一内存管理层还为频繁使用的小对象实现了缓存——`slab`缓存，`slab`缓存使用两种方法分配内存：
