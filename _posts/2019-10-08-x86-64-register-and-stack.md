@@ -51,7 +51,7 @@ gcc -S test.cpp
 命令行调用生成汇编语言
 
 ```assembly
-    .file   "test6.cpp"
+    .file   "test.cpp"
     .text
     .globl  _Z3fooi
     .type   _Z3fooi, @function
