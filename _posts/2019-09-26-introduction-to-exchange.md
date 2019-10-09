@@ -4,7 +4,6 @@ title: "各大交易所简介"
 date: 2019-09-26
 author: "Zzc"
 header-style: text
-catalog: true
 tags:
   - 投资
   - 金融
@@ -13,10 +12,10 @@ tags:
 
 <table>
    <tr>
-      <td>**交易所**</td>
-      <td>**缩写**</td>
-      <td>**柜台**</td>
-      <td>**交易品种**</td>
+     <td><b>交易所</b></td>
+      <td><b>缩写</b></td>
+      <td><b>柜台</b></td>
+      <td><b>交易品种</b></td>
    </tr>
    <tr>
       <td>上交所</td>
