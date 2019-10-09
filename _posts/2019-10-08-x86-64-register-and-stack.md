@@ -46,11 +46,11 @@ int main() {
 
 命令行调用生成汇编语言
 
-```bash
+```shell
 gcc -S test.cpp
 ```
 
-```x86asm
+```assembly
     .file   "test6.cpp"
     .text
     .globl  _Z3fooi
