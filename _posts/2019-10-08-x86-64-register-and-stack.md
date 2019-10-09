@@ -24,6 +24,8 @@ tags:
 
 ### 栈帧
 
+###### 基本结构
+
 ![img](\img\in-post\post-x86-64-register-and-stack\20160508214803291.png)
 
 机器语言中，GCC把过程转化成栈帧(frame)，由`%rbp`指向栈帧开始，`%rsp`指向栈顶
@@ -114,4 +116,56 @@ main:
 ```
   popq %rip
 ```
-4. 
+4. `foo`函数第16行将栈帧指针恢复，`main`函数第43行的代码实际等价于
+```
+  movq %rbp, %rsp
+  popq %rbp
+```
+
+###### 编译器优化后
+
+```shell
+gcc -O3 -S test.cpp
+```
+
+使用带有-O3优化选项的命令行生成汇编代码
+
+```
+    .file   "test.cpp"
+    .text
+    .p2align 4,,15
+    .globl  _Z3fooi
+    .type   _Z3fooi, @function
+_Z3fooi:
+.LFB12:
+    movslq  %edi, %rdi
+    movl    $1, -24(%rsp)
+    movl    $3, -20(%rsp)
+    movl    $5, -16(%rsp)
+    movl    -24(%rsp,%rdi,4), %eax
+    ret
+.LFE12:
+    .size   _Z3fooi, .-_Z3fooi
+    .section    .rodata.str1.1,"aMS",@progbits,1
+.LC0:
+    .string "i=%d,j=%d\n"
+    .section    .text.startup,"ax",@progbits
+    .p2align 4,,15
+    .globl  main
+    .type   main, @function
+main:
+.LFB13:
+    subq    $8, %rsp
+    movl    $3, %edx
+    movl    $1, %esi
+    movl    $.LC0, %edi
+    xorl    %eax, %eax
+    call    printf
+    xorl    %eax, %eax
+    addq    $8, %rsp
+    ret
+.LFE13:
+    .size   main, .-main
+    .ident  "GCC: (GNU) 4.8.5 20150623 (Red Hat 4.8.5-4)"
+    .section    .note.GNU-stack,"",@progbits 
+```
