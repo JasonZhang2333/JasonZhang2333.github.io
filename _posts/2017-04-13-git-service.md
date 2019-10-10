@@ -3,7 +3,7 @@ layout:     post
 title:      "搭建Git仓库方法"
 date:       2017-04-13 20:27:20
 author:     "xiaoh"
-header-img: "img/post-bg-default.jpg"
+header-style: text
 tags:
     - 编程
     - Linux
