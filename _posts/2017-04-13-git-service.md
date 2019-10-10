@@ -10,7 +10,7 @@ tags:
     - Git
 ---
 
-### [简介](#summary)
+###### [简介](#summary)
 
 GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。
 
@@ -20,13 +20,13 @@ GitHub就是一个免费托管开源代码的远程仓库。但是对于某些�
 
 ---
 
-##### [安装GIT](#install)
+###### [安装GIT](#install)
 
 ```shell
 $ sudo apt-get install git
 ```
 
-##### [创建用户](#adduser)
+###### [创建用户](#adduser)
 
 创建一个`git`用户,用来运行`git`服务
 
@@ -34,7 +34,7 @@ $ sudo apt-get install git
 $ sudo adduser git
 ```
 
-##### [创建证书登录](#authorized)
+###### [创建证书登录](#authorized)
 
 收集所有需要登录的用户的公钥，就是他们自己的`id_rsa.pub`文件，把所有公钥导入到`/home/git/.ssh/authorized_keys`文件里，一行一个。
 
@@ -52,7 +52,7 @@ $ sudo git init --bare sample.git
 $ sudo chown -R git:git sample.git
 ```
 
-##### [禁用shell登录](#login)
+###### [禁用shell登录](#login)
 
 出于安全考虑，第二步创建的`git`用户不允许登录`shell`，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：
 
@@ -64,7 +64,7 @@ git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
 
 这样，`git`用户可以正常通过`ssh`使用`git`，但无法登录`shell`，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出。
 
-##### [克隆远程仓库](#clone)
+###### [克隆远程仓库](#clone)
 
 现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：
 
@@ -78,7 +78,7 @@ warning: You appear to have cloned an empty repository.
 
 ---
 
-### [帮助](#help) 
+###### [帮助](#help) 
 
 由于上面的操作比较麻烦,我使用beego的架构写了一个帮助的项目,其中提供了,关于SSH KEY的相关操作,提供了和仓库的相关操作,项目比较简单,目前被我放到了github上面,链接地址如下:
 
@@ -86,6 +86,6 @@ warning: You appear to have cloned an empty repository.
 
 ---
 
-### [参考资料](#links)
+###### [参考资料](#links)
 
 <http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000>
