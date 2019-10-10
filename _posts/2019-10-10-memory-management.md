@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "《深入Linux内核架构》内存管理"
+title: "《深入Linux内核架构》内存"
 date: 2019-10-10
 author: "Zzc"
 header-style: text
