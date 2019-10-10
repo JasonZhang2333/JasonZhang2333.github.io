@@ -44,3 +44,48 @@ $ sudo adduser git
 
 ```shell
 $ sudo git init --bare sample.git
+```
+
+`Git`就会创建一个裸仓库，裸仓库没有工作区，因为服务器上的`Git`仓库纯粹是为了共享，所以不让用户直接登录到服务器上去改工作区，并且服务器上的`Git`仓库通常都以`.git`结尾。然后，把`owner`改为`git`：
+
+```shell
+$ sudo chown -R git:git sample.git
+```
+
+##### [禁用shell登录](#login)
+
+出于安全考虑，第二步创建的`git`用户不允许登录`shell`，这可以通过编辑`/etc/passwd`文件完成。找到类似下面的一行：
+
+```shell
+git:x:1001:1001:,,,:/home/git:/bin/bash
+改为
+git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+```
+
+这样，`git`用户可以正常通过`ssh`使用`git`，但无法登录`shell`，因为我们为`git`用户指定的`git-shell`每次一登录就自动退出。
+
+##### [克隆远程仓库](#clone)
+
+现在，可以通过`git clone`命令克隆远程仓库了，在各自的电脑上运行：
+
+```shell
+$ git clone git@server:/srv/sample.git
+Cloning into 'sample'...
+warning: You appear to have cloned an empty repository.
+```
+
+剩下的推送就简单了
+
+---
+
+### [帮助](#help) 
+
+由于上面的操作比较麻烦,我使用beego的架构写了一个帮助的项目,其中提供了,关于SSH KEY的相关操作,提供了和仓库的相关操作,项目比较简单,目前被我放到了github上面,链接地址如下:
+
+<https://github.com/pmars/gitService>
+
+---
+
+### [参考资料](#links)
+
+<http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000>
