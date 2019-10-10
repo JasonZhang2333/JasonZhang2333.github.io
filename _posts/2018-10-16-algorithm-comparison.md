@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "分治法、动态规划与贪心算法分析"
+title: "分治法、动态规划与贪心算法"
 date: 2018-10-16
 author: "Zzc"
 header-style: text
