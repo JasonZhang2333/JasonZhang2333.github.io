@@ -75,15 +75,6 @@ warning: You appear to have cloned an empty repository.
 ```
 
 剩下的推送就简单了
-
----
-
-###### [帮助](#help) 
-
-由于上面的操作比较麻烦,我使用beego的架构写了一个帮助的项目,其中提供了,关于SSH KEY的相关操作,提供了和仓库的相关操作,项目比较简单,目前被我放到了github上面,链接地址如下:
-
-<https://github.com/pmars/gitService>
-
 ---
 
 ###### [参考资料](#links)
