@@ -27,7 +27,7 @@ tags:
  `q` | 退出GDB，`Ctrl-C`/`Ctrl-D`也可
  `help [command]` | 命令帮助
  
- ### 运行程序
+ ### 程序运行命令
  
  命令 | 说明
  -|-
