@@ -16,5 +16,5 @@ tags:
 
 命令 | 说明
 -|-
- `gdb *program [*core*]` | [使用coredump]调试程序
+ `gdb *program* [*core*]` | [使用coredump]调试程序
 
