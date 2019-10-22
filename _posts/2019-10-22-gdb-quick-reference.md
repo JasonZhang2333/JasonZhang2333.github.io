@@ -17,7 +17,7 @@ tags:
 命令 | 说明
 -|-
 `gdb` [*program* [*core*]] | 使用coredump调试程序
-`b` [*file*:]*function* | 在文件的函数上设断点
+`b` [*file*:]*function* | 在文件函数上设断点
 `r` [*arglist*] | 设置参数启动程序
 `bt` | 打印程序栈
 `p` *expr* | 打印表达式的值
@@ -56,3 +56,8 @@ tags:
 
 命令 | 说明
 -|-
+`b` [*file*:]*function* | 在文件函数上设断点
+`b` [*file*:]*line* | 在文件某行上设断点
+`b` +/-*offset* | 在当前位置前后偏移设置断点
+`b` \**addr* | 在某地址设置断点
+`b` | 在下条指令设置断点
