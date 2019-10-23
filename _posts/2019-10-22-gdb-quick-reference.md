@@ -67,4 +67,14 @@ tags:
 `rbreak` *regex* | 在正则匹配的所有函数设置断点
 `watch` *expr* | 观察表达式值
 `catch` *event* | 设置`catch`，`throw`，`exec`，`fork`等事件触发断点
-`info` *break* | 显示所有断点
+`info break` | 显示所有断点
+`info watch` | 显示所有观察点
+`clear` | 清除下条指令的断点
+`clear` [*file*:]*func* | 清除函数断点
+`clear` [*file*:]*line* | 清除某行断点
+`delete` [*n*] | 清除断点
+`disable` [*n*] | 使某断点失效
+`enable` [*n*] | 启用断点
+`enable del` [*n*] | 启用断电，触发后删除
+`ignore` *n* *count* | 忽略断点几次
+`commands` *n* [silent] *command-list* end | 到达断点时执行命令
