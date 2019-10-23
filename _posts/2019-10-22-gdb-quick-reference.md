@@ -61,3 +61,10 @@ tags:
 `b` +/-*offset* | 在当前位置前后偏移设置断点
 `b` \**addr* | 在某地址设置断点
 `b` | 在下条指令设置断点
+`b` ... if *expr* | 设置条件断点
+`cond` *n* [*expr*] | 设置断点*n*为条件断点
+`tbreak` ... | 设置临时断点，触发后消失
+`rbreak` *regex* | 在正则匹配的所有函数设置断点
+`watch` *expr* | 观察表达式值
+`catch` *event* | 设置`catch`，`throw`，`exec`，`fork`等事件触发断点
+`info` *break* | 显示所有断点
