@@ -50,4 +50,13 @@ tags:
 
 ### 进程表示
 
+`Linux`内核涉及进程的算法都围绕一个名为`task_struct`的数据结构建立，该结构定义在`include/sched.h`中，如下所示：
 
+```cpp
+struct task_struct {
+  volatile long state; /* -1表示不可运行，0表示可运行，>0表示停止 */
+  void *stack;
+  atomic_t usage;
+  
+};
+```
