@@ -57,6 +57,40 @@ struct task_struct {
   volatile long state; /* -1表示不可运行，0表示可运行，>0表示停止 */
   void *stack;
   atomic_t usage;
+  unsigned long flags; /* 每进程标志，下文定义 */
+  unsigned long ptrace;
+  int lock_depth; /* 大内核锁深度 */
+
+  int prio, static_prio, normal_prio;
+  struct list_head run_list;
+  const struct sched_class *sched_class;
+  struct sched_entity se;
+
+  unsigned short ioprio;
+
+  unsigned long policy;
+  cpumask_t cpus_allowed;
+  unsigned int time_slice;
+
+#if defined(CONFIG_SCHEDSTATS) || defined(CONFIG_TASK_DELAY_ACCT)
+  struct sched_info sched_info;
+#endif
+
+  struct list_head tasks;
+  /* ptrace_list/ptrace_children链表是ptrace能够看到的当前进程的子进程列表 */
+  struct list_head ptrace_children;
+  struct list_head ptrace_list;
+  struct mm_struct *mm, *active_mm;
+
+/* 进程状态 */
+  struct linux_binfmt *binfmt;
+  long exit_state;
+  int exit_code, exit_signal;
+  int pdeath_signal; /* 在父进程终止时发送的信号 */
+  unsigned int personality;
+  unsigned did_exec:1;
+  pid_t pid;
+  pid_t tgid;
   
 };
 ```
